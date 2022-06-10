@@ -15,7 +15,24 @@ import Login from './pages/login';
 import checkLogin from './utils/checkLogin';
 import changeTheme from './utils/changeTheme';
 import useStorage from './utils/useStorage';
+import reportWebVitals from './utils/reportWebVitals';
 import './mock';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'model-viewer': ModelViewerJSX &
+        React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    }
+  }
+}
+
+interface ModelViewerJSX {
+  src: string;
+  poster?: string;
+  class?: string;
+  // ... others
+}
 
 const store = createStore(rootReducer);
 
@@ -90,5 +107,5 @@ function Index() {
     </BrowserRouter>
   );
 }
-
+reportWebVitals();
 ReactDOM.render(<Index />, document.getElementById('root'));

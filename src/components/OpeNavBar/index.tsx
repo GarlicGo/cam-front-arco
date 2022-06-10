@@ -9,12 +9,10 @@ import {
   Divider,
   Message,
   Button,
-  Typography,
-  Space,
 } from '@arco-design/web-react';
 import {
   IconLanguage,
-  IconNotification,
+  IconRotateRight,
   IconSunFill,
   IconMoonFill,
   IconUser,
@@ -38,7 +36,7 @@ import defaultLocale from '@/locale';
 import useStorage from '@/utils/useStorage';
 import { generatePermission } from '@/routes';
 
-function Navbar({ show }: { show: boolean }) {
+function OpeNavbar({ show }: { show: boolean }) {
   const t = useLocale();
   const userInfo = useSelector((state: GlobalState) => state.userInfo);
   const dispatch = useDispatch();
@@ -137,71 +135,39 @@ function Navbar({ show }: { show: boolean }) {
     </Menu>
   );
 
-  const positions = ['bl', 'bottom', 'br', 'tl', 'top', 'tr'];
-  const descriptions = ['文件', 'CAD', '测量', '视图', '帮助'];
-
   return (
     <div className={styles.navbar}>
-      {/* <div className={styles.left}>
-        <div className={styles.logo}>
-          <Logo />
-          <div className={styles['logo-name']}>CAM 云上软件</div>
-        </div>
-      </div> */}
-      <div className="dropdown-demo">
-        {descriptions.map((value, index) => (
-          <Dropdown
-            key={index}
-            // position={position}
-            droplist={
-              <Menu>
-                <Menu.Item key="1">Menu Item 1</Menu.Item>
-                <Menu.Item key="2">Menu Item 2</Menu.Item>
-                <Menu.Item key="3">Menu Item 3</Menu.Item>
-              </Menu>
-            }
-          >
-            <Button type="text">
-              <Typography.Paragraph style={{ margin: 0, cursor: 'pointer' }}>
-                {value}
-              </Typography.Paragraph>
-            </Button>
-          </Dropdown>
-        ))}
-      </div>
-      {/* <ul className={styles.right}>
-        <li>
-          <Select
-            triggerElement={
-              <Typography.Paragraph
-                style={{ width: "100%", margin: 0, cursor: 'pointer' }}
-              >
-                文件
-              </Typography.Paragraph>
-            }
-            options={['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen']}
-            // dropdownMenuStyle={{
-            //   width: '20px',
-            // }}
-            value={''}
-            trigger="click"
-            onChange={(value) => {
-              console.log('value->', value);
-            }}
-          />
-        </li>
-      </ul> */}
-      {/* <ul className={styles.right}>
-        {userInfo && (
-          <Dropdown droplist={droplist} position="br">
-            <Avatar size={32} style={{ cursor: 'pointer' }}>
-              <img alt="avatar" src={userInfo.avatar} />
-            </Avatar>
-          </Dropdown>
-        )}
-      </ul> */}
+      <ul className={styles.right}>
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+        <IconButton icon={<IconRotateRight />} />
+      </ul>
     </div>
   );
 }
 
-export default Navbar;
+export default OpeNavbar;

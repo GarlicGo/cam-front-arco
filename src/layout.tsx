@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
-import { Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from '@arco-design/web-react';
+import { Link, useHistory } from 'react-router-dom';
+import { Layout, Menu, Button } from '@arco-design/web-react';
 import cs from 'classnames';
 import {
   IconDashboard,
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import qs from 'query-string';
 import NProgress from 'nprogress';
 import Navbar from './components/NavBar';
-import Footer from './components/Footer';
+import OpeNavbar from './components/OpeNavBar';
 import useRoute from '@/routes';
 import { isArray } from './utils/is';
 import useLocale from './utils/useLocale';
@@ -20,6 +20,7 @@ import getUrlParams from './utils/getUrlParams';
 import lazyload from './utils/lazyload';
 import { GlobalState } from './store';
 import styles from './style/layout.module.less';
+import DrawBoard from './pages/DrawBoard';
 
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -76,7 +77,7 @@ function PageLayout() {
 
   const routeMap = useRef<Map<string, React.ReactNode[]>>(new Map());
 
-  const navbarHeight = 60;
+  const navbarHeight = 70;
   const menuWidth = collapsed ? 48 : settings.menuWidth;
 
   const showNavbar = settings.navbar && urlParams.navbar !== false;
@@ -174,6 +175,7 @@ function PageLayout() {
         })}
       >
         <Navbar show={showNavbar} />
+        <OpeNavbar show={showNavbar} />
       </div>
       <Layout>
         {showMenu && (
@@ -188,7 +190,8 @@ function PageLayout() {
             style={paddingTop}
           >
             <div className={styles['menu-wrapper']}>
-              <Menu
+              <Button>12</Button>
+              {/* <Menu
                 collapse={collapsed}
                 onClickMenuItem={onClickMenuItem}
                 selectedKeys={selectedKeys}
@@ -196,7 +199,7 @@ function PageLayout() {
                 onClickSubMenu={(_, openKeys) => setOpenKeys(openKeys)}
               >
                 {renderRoutes(locale)}
-              </Menu>
+              </Menu> */}
             </div>
             <div className={styles['collapse-btn']} onClick={toggleCollapse}>
               {collapsed ? <IconMenuUnfold /> : <IconMenuFold />}
@@ -204,7 +207,8 @@ function PageLayout() {
           </Sider>
         )}
         <Layout className={styles['layout-content']} style={paddingStyle}>
-          <div className={styles['layout-content-wrapper']}>
+          <DrawBoard />
+          {/* <div className={styles['layout-content-wrapper']}>
             {!!breadcrumb.length && (
               <div className={styles['layout-breadcrumb']}>
                 <Breadcrumb>
@@ -237,7 +241,7 @@ function PageLayout() {
               </Switch>
             </Content>
           </div>
-          {showFooter && <Footer />}
+          {showFooter && <Footer />} */}
         </Layout>
       </Layout>
     </Layout>
